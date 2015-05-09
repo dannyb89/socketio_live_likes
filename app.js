@@ -6,8 +6,13 @@ var app = express()
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-//set out port and other config, jade, etc...
-app.set('port', (process.env.PORT || 3000));
+// //set out port and other config, jade, etc...
+// app.set('port', (process.env.PORT || 3000));
+//fix for Heroku app crash issue
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
 app.use(express.logger('dev'))
@@ -57,8 +62,5 @@ io.on('connection', function(socket){
 	});
 });
 
-//fix for Heroku app crash issue
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+
 
