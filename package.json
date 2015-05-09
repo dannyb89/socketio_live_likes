@@ -1,0 +1,12 @@
+{
+  "name": "NodeLiveUpdate",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "express": "3.0.0alpha4",
+    "jade": "*",
+    "node-localstorage": "^0.5.0",
+    "socket.io": "^1.3.5",
+    "stylus": "^0.51.1"
+  }
+}
